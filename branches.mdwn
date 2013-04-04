@@ -21,8 +21,6 @@ That is to say, **please make your commits on the develop branch, not the master
 
 > "The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into develop (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment)." -- http://nvie.com/posts/a-successful-git-branching-model/ 
 
-<a href="http://nvie.com/posts/a-successful-git-branching-model/"><img src="../images/master-develop.png" align="right" ></a>
-
 ### Example feature branch: 2656-lucene
 
 First, we create the branch and check it out:
