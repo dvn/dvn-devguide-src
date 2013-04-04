@@ -1,0 +1,5 @@
+- Getting started: [[build]] and [[deploy]]
+- Source code: https://github.com/IQSS/dvn
+- Issue tracker: https://redmine.hmdc.harvard.edu/projects/dvn
+- Mailing list: https://groups.google.com/group/dataverse-community
+- IRC logs (#dvn on Freenode): http://irclog.iq.harvard.edu/dvn/today

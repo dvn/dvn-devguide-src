@@ -1,0 +1,29 @@
+/* ikiwiki local style sheet */
+
+/* Add local styling here, instead of modifying style.css. */
+
+h2 {
+  font-size: 100%;
+}
+
+h3 {
+  font-size: 90%
+}
+
+p {
+  margin-left: 10px;
+}
+
+pre {
+  border: 1px solid #DEDEDE;
+  margin-left: 10px;
+}
+
+code {
+  background-color: #F8F8F8;
+  border: 1px solid #DEDEDE;
+}
+
+pre code {
+  border: none;
+}

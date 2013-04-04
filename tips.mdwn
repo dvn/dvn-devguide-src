@@ -1,0 +1,11 @@
+## Previewing changes before a pull
+
+If the build fails overnight you may want to hold off on doing a pull until the problem is resolved. To preview what has changed since your last pull, you can do a `git fetch` (the first part of a pull) then `git log HEAD..origin/develop` to see the commit messages. `git log -p` or `git diff` will allow you to see the contents of the changes:
+
+    git checkout develop
+    git fetch
+    git log HEAD..origin/develop
+    git log -p HEAD..origin/develop
+    git diff HEAD..origin/develop
+
+After the build is working again, you can simply do a pull as normal.
