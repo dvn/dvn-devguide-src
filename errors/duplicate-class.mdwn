@@ -1,0 +1,8 @@
+The error "duplicate class" can result whenever you resolve a merge conflict in git.
+
+The fix is to close NetBeans and delete (or move aside) the cache like this:
+
+    cd ~/Library/Caches/NetBeans
+    mv 7.2.1 7.2.1.moved
+
+According to https://netbeans.org/bugzilla/show_bug.cgi?id=197983 this might be fixed in NetBeans 7.3.
