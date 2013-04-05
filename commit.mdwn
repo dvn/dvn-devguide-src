@@ -1,0 +1,11 @@
+## Committing changes
+
+By following the instructions in the [[build]] step, you should be in the "develop" branch, which is where we want to make commits as we work toward the next release.
+
+You can verify which branch you are on by clicking Team then "Repository Browser".
+
+You should see `dvn [develop]` at the root of the tree and **develop** in bold under Branches -> Local
+
+Click Team, then "Show Changes". Select the desired files and right-click to commit.
+
+To publish your changes on GitHub, you'll need to follow the next step: [[push]].

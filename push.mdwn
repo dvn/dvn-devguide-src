@@ -1,0 +1,7 @@
+## Pushing your commits to GitHub
+
+After making your [[commit]], push it to GitHub by clicking Team -> Remote -> Push, then Next (to use your configured remote repository), then checking **develop** and Finish.
+
+Your commit should now appear on GitHub in the develop branch: https://github.com/IQSS/dvn/commits/develop
+
+Your commit should **not** appear in the master branch on GitHub: https://github.com/IQSS/dvn/commits/master  . Not yet anyway. Remember, we only merge commits into master when we are ready to release.

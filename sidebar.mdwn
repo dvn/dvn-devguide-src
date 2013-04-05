@@ -1,5 +1,7 @@
 - [[Build]]
 - [[Deploy]]
+- [[Commit]]
+- [[Push]]
 - [[Branches]]
 - [[Tips]]
 - [[Errors]]

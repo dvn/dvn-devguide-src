@@ -143,3 +143,15 @@ As we work on the feature branch, we merge the latest changes from "develop". We
     murphy:dvn pdurbin$ git push origin 2656-lucene
     (snip)
     murphy:dvn pdurbin$ 
+
+## Switching to the master branch to merge commits from the develop branch
+
+We should really only need to switch from the develop branch to the master branch as we prepare for a release.
+
+First, we check out the master branch by clicking Team -> Git -> Branch -> Switch to Branch.
+
+Change Branch to "origin/master" and check the box for "Checkout as New Branch" and fill in "master" as the "Branch Name" to match the name of the branch we're switching to. Then click "Switch".
+
+Now, in the Git Repository Browser (from Team -> Repository Browser) the root of the tree should say `dvn [master]` and you should see two branches under Branches -> Local. **master** should be in bold and develop should not.
+
+FIXME: explain how to merge commits into master for a final release (and how to tag the release)
