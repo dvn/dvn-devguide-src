@@ -3,5 +3,6 @@
 - [[Commit]]
 - [[Push]]
 - [[Branches]]
+- [[Features]]
 - [[Tips]]
 - [[Errors]]

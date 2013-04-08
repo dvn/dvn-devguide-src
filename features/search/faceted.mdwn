@@ -1,0 +1,60 @@
+In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search:
+
+[[!toc levels=3]]
+
+## Home page - DONE
+
+http://localhost:8080/dvn/
+
+### Suggested search - DONE
+
+User clicks one of the suggested terms on the home page.
+
+### Basic search  - DONE
+
+User enters a query from the home page.
+
+## Advanced search page - PARTIAL
+
+http://localhost:8080/dvn/faces/AdvSearchPage.xhtml
+
+### Basic search from the advanced search page - DONE
+
+This works exactly as basic search from above. The same code is included in the page.
+
+### Study Cataloging Information - DONE
+
+This is similar to basic search but you can add "contains" or "does not contain" for various fields at once:
+
+- Title
+- Producer
+- Production Date
+- Time Period Covered Start 
+
+### Tabular Data Variable Information
+
+This search looks into the variables of uploaded files (tab-separated, Stata, SPSS, etc.).
+
+### FITS File Information
+
+## Subsearch ("within these results" after a search)
+
+You are given the option to check this box after search from the home page or the advanced search page.
+
+## Dataverse-specific search
+
+http://localhost:8080/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
+
+## All studies listing - PARTIAL
+
+From the home page you can click "view more" to see a list of all studies at http://localhost:8080/dvn/faces/StudyListingPage.xhtml?mode=100 and we probably want to have facets there.
+
+Code has been added but commented out because retrieving all the facets slows down the listing.
+
+## Dynamic collections
+
+Dynamic collections are configured within a dataverse: http://guides.thedata.org/book/manage-collections
+
+## OAI Harvesting Sets
+
+OAI harvesting is configured at the DVN level: http://guides.thedata.org/book/manage-oai-harvesting-sets
