@@ -1,10 +1,12 @@
-In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search:
+In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate):
 
 [[!toc levels=3]]
 
+http://dvn-3.hmdc.harvard.edu/dvn/ is the place to test faceted search because war files built from the latest code at https://github.com/iqss/dvn/tree/2656-lucene are deployed there periodically.
+
 ## Home page - DONE
 
-http://localhost:8080/dvn/
+http://dvn-3.hmdc.harvard.edu/dvn/
 
 ### Suggested search - DONE
 
@@ -16,7 +18,7 @@ User enters a query from the home page.
 
 ## Advanced search page - PARTIAL
 
-http://localhost:8080/dvn/faces/AdvSearchPage.xhtml
+http://dvn-3.hmdc.harvard.edu/dvn/faces/AdvSearchPage.xhtml
 
 ### Basic search from the advanced search page - DONE
 
@@ -39,7 +41,7 @@ This search looks into the variables of uploaded files (tab-separated, Stata, SP
 
 ## New search from study listing page - DONE
 
-A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://localhost:8080/dvn/
+A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://dvn-3.hmdc.harvard.edu/dvn/
 
 ## Subsearch ("within these results" after a search)
 
@@ -47,13 +49,13 @@ You are given the option to check this box after search from the home page or th
 
 ## Dataverse-specific search
 
-http://localhost:8080/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
+http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
 
 Adding facets to this search is complicated. In this search, the list of studyIds from the dataverse is passed as a parameter and the results are filtered down to only studies from the dataverse. In order to filter facet results down to the dataverse, we'll need to alter the query. See https://github.com/IQSS/dvn/blob/b40c4a0736a5b51df29d45dfc0af2a68ba6c5274/src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java#L892
 
 ## All studies listing - PARTIAL
 
-From the home page you can click "view more" to see a list of all studies at http://localhost:8080/dvn/faces/StudyListingPage.xhtml?mode=100 and we probably want to have facets there.
+From the home page you can click "view more" to see a list of all studies at http://dvn-3.hmdc.harvard.edu/dvn/faces/StudyListingPage.xhtml?mode=100 and we probably want to have facets there.
 
 Code to do a MatchAllDocsQuery has been added but commented out and is not well tested and may need a re-write.
 
