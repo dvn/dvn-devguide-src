@@ -37,6 +37,10 @@ This search looks into the variables of uploaded files (tab-separated, Stata, SP
 
 ### FITS File Information
 
+## New search from study listing page - DONE
+
+A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://localhost:8080/dvn/
+
 ## Subsearch ("within these results" after a search)
 
 You are given the option to check this box after search from the home page or the advanced search page.
@@ -45,16 +49,20 @@ You are given the option to check this box after search from the home page or th
 
 http://localhost:8080/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
 
+Adding facets to this search is complicated. In this search, the list of studyIds from the dataverse is passed as a parameter and the results are filtered down to only studies from the dataverse. In order to filter facet results down to the dataverse, we'll need to alter the query. See https://github.com/IQSS/dvn/blob/b40c4a0736a5b51df29d45dfc0af2a68ba6c5274/src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java#L892
+
 ## All studies listing - PARTIAL
 
 From the home page you can click "view more" to see a list of all studies at http://localhost:8080/dvn/faces/StudyListingPage.xhtml?mode=100 and we probably want to have facets there.
 
-Code has been added but commented out because retrieving all the facets slows down the listing.
+Code to do a MatchAllDocsQuery has been added but commented out and is not well tested and may need a re-write.
 
 ## Dynamic collections
 
 Dynamic collections are configured within a dataverse: http://guides.thedata.org/book/manage-collections
 
-## OAI Harvesting Sets
+## OAI Harvesting Sets - DONE
 
 OAI harvesting is configured at the DVN level: http://guides.thedata.org/book/manage-oai-harvesting-sets
+
+Facets results have not been added as they are not necessary (only a simple list of IDs ir required) but we should ensure that changes have not broken the search used by OAI harvesting sets.
