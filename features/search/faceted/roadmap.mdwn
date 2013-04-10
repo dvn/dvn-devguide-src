@@ -1,0 +1,22 @@
+[[!toc]]
+
+## How everyday search works
+
+Everyday DVN search (users finding data) is designed around the StudyListingPage. That is to say, the goal is to list studies that match the query and display them on a page of results.
+
+Ultimately, the StudyListingPage works by receiving a list of IDs from the "study" table in the database. In code, a variable called "studyIds" is common to see.
+
+## Narrowing search results
+
+Searches are typically narrowed by passing an existing list of studyIds to a search function.  For example, a search from a dataverse such as https://dvn.iq.harvard.edu/dvn/dv/odum passes in the studyIds of all studies in that dataverse, does a normal (non-faceted) query of Lucene, and then narrows the query results to studyIds in that dataverse.
+
+Any function that narrows results based on studyIds that have been passed to it needs to be re-written to support faceted results. The reason is that faceted results are returned by querying Lucene so any narrowing needs to be done by querying Lucene again, this time with a faceted search that matches only the facets in question. For example:
+
+    +(+(+title:data +productionDate:1989)) +$facets:dvName?ODUM
+
+## Forward compatibility with non-Lucene solutions
+
+For a variety of reasons, [Solr][] has been considered as a replacement for Lucene and some experimentation was done in https://github.com/IQSS/dvn/tree/2656-solr but per https://redmine.hmdc.harvard.edu/issues/2656#note-12 Solr was abandoned because adopting it requires us to rewrite our business logic against a new API (SolrJ). If the Lucene code is ever significantly refactored, care should be taken to think about a potential move to a non-Lucene search solution such as Solr or [ElasticSearch][].
+
+[Solr]: http://lucene.apache.org/solr/
+[ElasticSearch]: http://www.elasticsearch.org

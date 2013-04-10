@@ -1,4 +1,4 @@
-In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate):
+In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate, per a [[roadmap]]):
 
 [[!toc levels=3]]
 
