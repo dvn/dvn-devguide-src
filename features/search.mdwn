@@ -1,3 +1,5 @@
-[[!map pages=features/search/*]]
-
 DVN search is powered by Lucene: https://lucene.apache.org/core/
+
+Subpages:
+
+[[!map pages=features/search/*]]
