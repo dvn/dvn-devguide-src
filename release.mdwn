@@ -1,0 +1,25 @@
+[[!toc levels=3]]
+
+## Merge develop into master
+
+## Tag the release
+
+Here is an example of how the 3.3 tag ( https://github.com/IQSS/dvn/tree/3.3 ) was created and pushed to GitHub:
+
+    murphy:dvn pdurbin$ git branch
+      develop
+    * master
+    murphy:dvn pdurbin$ git tag -a 3.3 -m 'tagging master as 3.3'
+    murphy:dvn pdurbin$ git tag
+    3.3
+    murphy:dvn pdurbin$ git push origin 3.3
+    Counting objects: 1, done.
+    Writing objects: 100% (1/1), 172 bytes, done.
+    Total 1 (delta 0), reused 0 (delta 0)
+    To git@github.com:IQSS/dvn.git
+     * [new tag]         3.3 -> 3.3
+    murphy:dvn pdurbin$
+
+## Make release available for download
+
+Historically, releases have been made available at http://sourceforge.net/projects/dvn/files/dvn/ but more recently they have been available at http://dvn.github.io/downloads as well.
