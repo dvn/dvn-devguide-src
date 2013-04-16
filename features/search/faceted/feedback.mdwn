@@ -1,0 +1,1 @@
+- When you do a search, should you *always* see the labels of all the facets (i.e. topicVocabClassURI, topicClassVocabulary) even if there are no results for some of the labels?
