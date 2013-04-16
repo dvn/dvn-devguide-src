@@ -53,11 +53,11 @@ You are given the option to check this box after search from the home page or th
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, the number of studies shown corresponds to that dataverse. That is, a search is performed.  Should we show faceted search results here? This is similar in concept to showing faceted results on the "all studies listing" page.
 
-### New dataverse-specific search - DONE
+### New dataverse-specific search - PARTIAL
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
 
-As of https://github.com/IQSS/dvn/commit/3f42a4c dataverse-specific search is based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query.
+As of https://github.com/IQSS/dvn/commit/3f42a4c dataverse-specific search is based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query. An initial search works fine but removing the facet for the dataverse itself results in strange behavior.
 
 ### Subsearch ("within these results") after a search from a dataverse page
 
