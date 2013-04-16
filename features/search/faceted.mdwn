@@ -47,11 +47,21 @@ A fast way to get to the study listing page is by clicking a suggested term from
 
 You are given the option to check this box after search from the home page or the advanced search page.
 
-## Dataverse-specific search
+## Dataverse pages - PARTIAL
+
+### Dataverse landing page?
+
+http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, the number of studies shown corresponds to that dataverse. That is, a search is performed.  Should we show faceted search results here? This is similar in concept to showing faceted results on the "all studies listing" page.
+
+### New dataverse-specific search - DONE
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
 
-Adding facets to this search is complicated. In this search, the list of studyIds from the dataverse is passed as a parameter and the results are filtered down to only studies from the dataverse. In order to filter facet results down to the dataverse, we'll need to alter the query. See https://github.com/IQSS/dvn/blob/b40c4a0736a5b51df29d45dfc0af2a68ba6c5274/src/DVN-EJB/src/java/edu/harvard/iq/dvn/core/index/Indexer.java#L892
+As of https://github.com/IQSS/dvn/commit/3f42a4c dataverse-specific search is based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query.
+
+### Subsearch ("within these results") after a search from a dataverse page
+
+This will probably be solved when the main "within these results" area is refactored.
 
 ## All studies listing - PARTIAL
 
