@@ -8,11 +8,13 @@ Ultimately, the StudyListingPage works by receiving a list of IDs from the "stud
 
 ## Narrowing search results
 
-Searches are typically narrowed by passing an existing list of studyIds to a search function.  For example, a search from a dataverse such as https://dvn.iq.harvard.edu/dvn/dv/odum passes in the studyIds of all studies in that dataverse, does a normal (non-faceted) query of Lucene, and then narrows the query results to studyIds in that dataverse.
+Historically, searches are narrowed by passing an existing list of studyIds to a search function.  For example, a search from a dataverse such as https://dvn.iq.harvard.edu/dvn/dv/odum passes in the studyIds of all studies in that dataverse, does a normal (non-faceted) query of Lucene, and then narrows the query results to studyIds in that dataverse.
 
 Any function that narrows results based on studyIds that have been passed to it needs to be re-written to support faceted results. The reason is that faceted results are returned by querying Lucene so any narrowing needs to be done by querying Lucene again, this time with a faceted search that matches only the facets in question. For example:
 
     +(+(+title:data +productionDate:1989)) +$facets:dvName?ODUM
+
+Care must be taken, however, to make sure collection search continues to work because collections can contain studies that are part of a different dataverse.
 
 ## Forward compatibility with non-Lucene solutions
 
