@@ -59,6 +59,16 @@ http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page f
 
 As of https://github.com/IQSS/dvn/commit/5debbd9 dataverse-specific search is based on facets (and seems to be working) which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query.
 
+### Collection search
+
+For example, this is the "Heath" collection from MRA (by clicking "Health" on the MRA landing page)
+
+http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/StudyListingPage.xhtml?mode=1&collectionId=6
+
+You can also search the MRA "Health" collection via advanced search with "Collections Scope":
+
+http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/AdvSearchPage.xhtml
+
 ### Subsearch ("within these results") after a search from a dataverse page
 
 This will probably be solved when the main "within these results" area is refactored.
