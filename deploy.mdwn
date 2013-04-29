@@ -1,3 +1,9 @@
 Once the [[build]] of your war file is successful, you'll want to deploy it to GlassFish.
 
 For now, please see our older guide at http://guides.thedata.org/book/0-automated-installer-new-v30 for details.
+
+download http://www.enterprisedb.com/products/pgdownload.do#osx via http://www.postgresql.org/download/macosx/
+
+change $PATH for `psql`
+
+something about trust T
