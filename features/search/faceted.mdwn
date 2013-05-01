@@ -1,30 +1,24 @@
 In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate, per a [[roadmap]]). The [[status]] page summarizes the items below.
 
-[[!toc levels=3]]
+[[!toc levels=4]]
 
 http://dvn-3.hmdc.harvard.edu/dvn/ is the place to test faceted search because war files built from the latest code at https://github.com/iqss/dvn/tree/2656-lucene are deployed there periodically.
 
-## Home page - DONE
-
-http://dvn-3.hmdc.harvard.edu/dvn/
-
-### Suggested search - DONE
-
-User clicks one of the suggested terms on the home page.
+## Network level - PARTIAL
 
 ### Basic search  - DONE
 
-User enters a query from the home page.
+User enters a query from the home page: http://dvn-3.hmdc.harvard.edu/dvn/
 
-## Advanced search page - PARTIAL
+### Suggested search - DONE
+
+User clicks one of the suggested terms on the home page:  http://dvn-3.hmdc.harvard.edu/dvn/
+
+### Advanced search page - PARTIAL
 
 http://dvn-3.hmdc.harvard.edu/dvn/faces/AdvSearchPage.xhtml
 
-### Basic search from the advanced search page - DONE
-
-This works exactly as basic search from above. The same code is included in the page.
-
-### Study Cataloging Information - PARTIAL
+#### Study Cataloging Information - PARTIAL
 
 This is similar to basic search but you can add "contains" or "does not contain" for various fields at once:
 
@@ -33,41 +27,49 @@ This is similar to basic search but you can add "contains" or "does not contain"
 - Production Date
 - Time Period Covered Start 
 
-#### FIXME: Some advanced searches failing on dvn-3 (i.e. author)
+##### FIXME: Some advanced searches failing on dvn-3 (i.e. author), see Redmine 2931
 
-No results for searches on author at http://dvn-3.hmdc.harvard.edu/dvn/faces/AdvSearchPage.xhtml (seeing author rather than authorName and keyword rather than keywordValue)
+No results for searches on author at http://dvn-3.hmdc.harvard.edu/dvn/faces/AdvSearchPage.xhtml (seeing author rather than authorName and keyword rather than keywordValue). We are also seeing this in production at http://thedata.harvard.edu/dvn/dv/mra as reported at https://redmine.hmdc.harvard.edu/issues/2931 where a fix (a hack for now) is proposed.
 
 Combinations such as `+(+title:data +productionDate:1997)` seem to work fine.
 
-### Tabular Data Variable Information (lower priority) - PARTIAL
+#### Tabular Data Variable Information (lower priority) - PARTIAL
 
 This search looks into the variables of uploaded files (tab-separated, Stata, SPSS, etc.).
 
 If you search for "data" under "Title" and "Variable Information" you should see facets.
 
-### FITS File (metadata) Information (lower priority)
+#### FITS File (metadata) Information (lower priority)
 
-## New search from study listing page - DONE
+### New search from study listing page - DONE
 
 A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://dvn-3.hmdc.harvard.edu/dvn/
 
-## Subsearch ("within these results" after a search)
+### Subsearch ("within these results" after a search)
 
 You are given the option to check this box after search from the home page or the advanced search page.
 
-## Dataverse pages - PARTIAL
+##### FIXME: Text above subsearch should show all previous and current terms
 
-### Dataverse landing page? - DEFERRED
+## Dataverse level - PARTIAL
+
+### Landing page for each dataverse - DEFERRED
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, the number of studies shown corresponds to that dataverse. That is, a search is performed.  Should we show faceted search results here? This is similar in concept to showing faceted results on the "all studies listing" page.
 
 We decide to defer on adding facets to dataverse landing pages, at least for now.
 
-### New dataverse-specific search - DONE
+### Basic search from dataverse level - PARTIAL
 
-http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked).
+http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked) unless the dataverse has collections that contain studies from other dataverses.
 
-As of https://github.com/IQSS/dvn/commit/5debbd9 dataverse-specific search is based on facets (and seems to be working) which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query.
+In https://github.com/IQSS/dvn/commit/5debbd9 dataverse-specific search was change to be based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query but this means that searches wouldn't find studies in collections from other dataverses. To resolve this for now, as of https://github.com/IQSS/dvn/commit/bf343fe if a dataverse has a collection, we use the older, non-faceted search.
+
+### Advanced search from dataverse level - PARTIAL
+
+#### FIXME: Advanced search from a dataverse will collections does not find studies from other dataverses
+
+For now, we'll probably revert to the old non-faceted search if a dataverse has collections, as we did with basic search.
 
 ### Collection search
 
@@ -79,27 +81,23 @@ You can also search the MRA "Health" collection via advanced search with "Collec
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/AdvSearchPage.xhtml
 
-#### FIXME: Collection search should find studies from other dataverses
-
-A search for "furman" at http://dvn-4.hmdc.harvard.edu/dvn/dv/gpd (no faceting code yet) finds hdl:1902.2/3468 but the same search at http://dvn-3.hmdc.harvard.edu/dvn/dv/gpd does not because currently the query limits the search to the current dataverse with a facet (`+$facets:dvName?gpd`) and the study in question belongs to a different dataverse (different dvName).
+These code paths have not been examined yet.
 
 ### Subsearch ("within these results") after a search from a dataverse page
 
 This will probably be solved when the main "within these results" area is refactored.
 
-#### FIXME: Text above subsearch should show all previous and current terms
-
-## All studies listing - DEFERRED
+### All studies listing - DEFERRED
 
 From the home page you can click "view more" to see a list of all studies at http://dvn-3.hmdc.harvard.edu/dvn/faces/StudyListingPage.xhtml?mode=100 and we probably want to have facets there.
 
 Code to do a MatchAllDocsQuery has been added but commented out and is not well tested and may need a re-write. For now we have decide to defer adding facets to the all studies listing page.
 
-## Dynamic collections
+## Non user-facing search - DONE (nothing to do)
 
-Dynamic collections are configured within a dataverse: http://guides.thedata.org/book/manage-collections
+This simply a list of other places Lucene is used in the application but where it doesn't make sense to expose faceted results to the users. Functionality should still be tested, however, to make no regressions have been introduced.
 
-## OAI Harvesting Sets - DONE
+### OAI Harvesting Sets - DONE (nothing to do)
 
 OAI harvesting is configured at the DVN level: http://guides.thedata.org/book/manage-oai-harvesting-sets
 
