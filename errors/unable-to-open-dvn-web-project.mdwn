@@ -1,0 +1,10 @@
+If you are seeing errors such as
+
+"Unable to find the sources roots for the project DVN-web"
+
+or
+
+"DVN-web: Cannot find the Web Pages folder. Open the project properties and in the Sources category browse the correct Web Pages
+folder"
+
+you probably have lost your project.properties and project.xml files. The [[build]] page has instructions on putting them back into place.
