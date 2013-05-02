@@ -65,23 +65,17 @@ http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page f
 
 In https://github.com/IQSS/dvn/commit/5debbd9 dataverse-specific search was change to be based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query but this means that searches wouldn't find studies in collections from other dataverses. To resolve this for now, as of https://github.com/IQSS/dvn/commit/bf343fe if a dataverse has a collection, we use the older, non-faceted search.
 
-### Advanced search from dataverse level - PARTIAL
-
-#### FIXME: Advanced search from a dataverse will collections does not find studies from other dataverses
-
-For now, we'll probably revert to the old non-faceted search if a dataverse has collections, as we did with basic search.
-
-### Collection search
-
-For example, this is the "Heath" collection from MRA (by clicking "Health" on the MRA landing page)
+To perform a basic search within a collection, you can click the name of the collection from the landing page of the dataverse. For example, this is the "Heath" collection from MRA (by clicking "Health" on the MRA landing page)
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/StudyListingPage.xhtml?mode=1&collectionId=6
 
-You can also search the MRA "Health" collection via advanced search with "Collections Scope":
+### Advanced search from dataverse level - PARTIAL
+
+As with basic search, for now we only show faceted results from the dataverse level when the dataverse doesn't have any collections.
+
+Please note that from the advanced search page at the dataverse level, you can select particular collections with the radio button under "Collection Scope". For example, you can select the "Health" collection from MRA here:
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/AdvSearchPage.xhtml
-
-These code paths have not been examined yet.
 
 ### Subsearch ("within these results") after a search from a dataverse page
 
