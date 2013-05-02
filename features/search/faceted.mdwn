@@ -41,6 +41,8 @@ If you search for "data" under "Title" and "Variable Information" you should see
 
 #### FITS File (metadata) Information (lower priority)
 
+Please note that you only see the option to search FITS files if any FITS files have been uploaded.
+
 ### New search from study listing page - DONE
 
 A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://dvn-3.hmdc.harvard.edu/dvn/
