@@ -1,22 +1,87 @@
-[[!toc]]
+[[!toc levels=4]]
 
-## How everyday search works
+## The design of DVN search (before Redmine 2656)
 
-Everyday DVN search (users finding data) is designed around the StudyListingPage. That is to say, the goal is to list studies that match the query and display them on a page of results.
+Everyday DVN search (users finding data) is designed around the StudyListingPage. That is to say, the goal is to produce a page of results that lists studies that match a query with respect to the context in which the query was made.
 
-Ultimately, the StudyListingPage works by receiving a list of IDs from the "study" table in the database. In code, a variable called "studyIds" is common to see.
+Context is important, especially network level searches vs. dataverse level searches.
 
-## Narrowing search results
+### Context: Network level search vs. dataverse level search
 
-Historically, searches are narrowed by passing an existing list of studyIds to a search function.  For example, a search from a dataverse such as https://dvn.iq.harvard.edu/dvn/dv/odum passes in the studyIds of all studies in that dataverse, does a normal (non-faceted) query of Lucene, and then narrows the query results to studyIds in that dataverse.
+If a search takes place at the network level, the entire network is searched.
 
-Any function that narrows results based on studyIds that have been passed to it needs to be re-written to support faceted results. The reason is that faceted results are returned by querying Lucene so any narrowing needs to be done by querying Lucene again, this time with a faceted search that matches only the facets in question. For example:
+If a search takes place at a dataverse level, the search results should be limited to studies that are owned by the dataverse itself or that have been included in the dataverse by a collection.
 
-    +(+(+title:data +productionDate:1989)) +$facets:dvName?ODUM
+#### Collections
 
-Care must be taken, however, to make sure collection search continues to work because collections can contain studies that are part of a different dataverse.
+It is important to note that collections themselves can be defined by search. Collections "can be created with a selection of specific studies or as a combination of live searches for studies that meet a set of predefined criteria" per http://thedata.org/publications/introduction-dataverse-network-infrastructure-data-sharing and "the content of the virtual collection is not fixed - as new studies are added to repositories, they are indexed by the index servers and dynamically incorporated into the virtual collection" per http://thedata.org/publications/digital-library-dissemination-and-replication-quantitative-social-science- . Collections that are defined by search are called "dynamic collections."
 
-## Forward compatibility with non-Lucene solutions
+## The implementation of DVN search (before Redmine 2656)
+
+### StudyIds: a List of Long values corresponding to database IDs in the "study" table
+
+Ultimately, the StudyListingPage works by receiving a list of IDs from the "study" table in the database. In code, a variable called "`studyIds`" is common, a `List` of `Long` values that is passed to a method such as `setStudyIds(studyIds)` to tell the StudyListingPage which studies to list.
+
+In some cases, the `studyIds` variable is assigned only once. In many cases, the `studyIds` variable is manipulated by various methods before is it passed to the `setStudyIds` method, narrowing the `List` of `Long` values based on a variety of criteria.
+
+### StudyIds and the multi-pass approach
+
+The manipulation and narrowing of `studyIds` is a multi-pass approach. The original `List` of `Long` values is modified by various methods. Examples of multi-pass include:
+
+- When a "within these results" search is performed, the `studyIds` from the previous search is passed in and a new search search is performed. After the new search is performed, a method called `intersectionResults` is called to narrow the final list of `studyIds` to be the `Long` values that appear in both the new search and the old `List` of `studyIds`.
+- When a search is performed a dataverse level, `studyIds` is initially assigned the `List` of `Long` values that match a Lucene query across the entired network. Then `intersectionResults` is called to narrow `studyIds` to contain only the `List` of `Long` values for studies that are part of that dataverse.
+
+The multi-pass approach of directly manipulating the `List` of `Long` values in the `studyId` variable works well until faceted results are desired.
+
+## The re-implementation required for faceted search (Redmine 2656)
+
+In https://redmine.hmdc.harvard.edu/issues/2656 attempts are being made to add faceted search to the DVN. In general, the approach has been to added faceted search results first in places where it is relatively easy to do so. Accuracy of results is more important than having faceted results.
+
+### Facet results require a single pass
+
+Faceted results come from code that looks something like this:
+
+    DocumentCollector s = new DocumentCollector(searcher);
+    TaxonomyReader taxo = new DirectoryTaxonomyReader(taxoDir);
+    FacetSearchParams facetSearchParams = new FacetSearchParams();
+    facetSearchParams.addFacetRequest(new CountFacetRequest(new CategoryPath("dvName"), 10));
+    facetSearchParams.addFacetRequest(new CountFacetRequest(new CategoryPath("authorName"), 10));
+    FacetsCollector facetsCollector = new FacetsCollector(facetSearchParams, r, taxo);
+    searcher.search(query, MultiCollector.wrap(s, facetsCollector));
+    List hits = s.getStudies();
+    List<FacetResult> facetResults = facetsCollector.getFacetResults();
+
+In the past the `hits` variable often went through multiple passes to narrow the results down to a `List` of `studyIds`.
+
+When this narrowing occurs, the `facetResults` are completely out of sync with the original `hits` variable.
+
+Rather than a multi-pass approach, a single pass is needed.
+
+All the logic that previously was performed by multiple passes in various methods such as `intersectionResults` needs to be added to the Lucene `query` variable itself in order for `facetResults` to be accurate.
+
+### Where faceted search works (in develop): single passes
+
+For a variety of search use cases in the DVN where multiple passes are not performed, code has been added in the `develop` branch to support faceted search. Please see the [[faceted/status]] page for details.
+
+### Converting multi-pass to single pass
+
+Since the methods used in the multi-pass approach operate on `Long` values to narrow the `List` of `studyIds` a reasonable single-pass approach might also operated on `Long` values, which correspond to the database IDs of studies in the "study" table.
+
+#### Conversion example: "within these results"
+
+The "within these results" feature is an example of a place where multi-pass could be converted to single-pass.
+
+Let's imagine that a basic search at the dataverse level results in 9 results for "democracy". By clicking "within these results" and searching for "replication" 3 results are expected.
+
+In the multi-pass approach, the `List` of 9 `studyIds` is passed to the search method, which finds 21 results for "replication" but then takes the intersection of the 21 results and the 9 results to return 3 results.
+
+To convert this to a single-pass, we would take the "within these results" query (for the term "replication") and append an `AND` followed by a list of the 9 `studyIds` matching "democracy" that were passed in. It would looks something like this:
+
+String queryString = "+(relatedPublications:replic restrictions:replic kindOfData:replic topicClassVocabulary:replic disclaimer:replic timePeriodCoveredStart:replic characteristicOfSources:replic studyNoteType:replic otherIdAgency:replic dateOfCollection:replic abstractText:replic responseRate:replic specialPermissions:replic keywordValue:replic geographicUnit:replic distributorContactEmail:replic dateOfDeposit:replic studyGrantNumber:replic replicationForId:replic universe:replic samplingProcedure:replic country:replic conditions:replic geographicCoverage:replic relatedPublicationsId:replic authorAffiliation:replic actionsToMinimizeLoss:replic dvOwnerId:replic producerName:replic authorName:replic unf:replic distributionDate:replic otherId:replic studyLevelErrorNotes:replic collectionMode:replic originOfSources:replic availabilityStatus:replic abstractDate:replic studyNoteSubject:replic distributorContact:replic dataCollector:replic otherDataAppraisal:replic productionDate:replic contact:replic citationRequirements:replic authority:replic $facets:replic fileDescription:replic title:replic studyId:replic replicationFor:replic topicVocabClassURI:replic timePeriodCoveredEnd:replic studyNoteText:replic protocol:replic topicClassValue:replic versionDate:replic timeMethod:replic originalArchive:replic cleaningOperations:replic collectionSize:replic globalId:replic samplingErrorEstimate:replic researchInstrument:replic dateOfCollectionEnd:replic placeOfAccess:replic relatedStudy:replic accessToSources:replic frequencyOfDataCollection:replic fundingAgency:replic studyVersion:replic distributorName:replic relatedMaterial:replic seriesName:replic depositorRequirements:replic dataCollectionSituation:replic weighting:replic versionId:replic unitOfAnalysis:replic controlOperations:replic seriesInformation:replic dataSources:replic keywordVocabulary:replic versionUnf:replic) AND (id:6 OR id:32 OR id:50 OR id:60 OR id:61 OR id:84 OR id:85 OR id:89 OR id:92)";
+
+## Future
+
+### Forward compatibility with non-Lucene solutions
 
 For a variety of reasons, [Solr][] has been considered as a replacement for Lucene and some experimentation was done in https://github.com/IQSS/dvn/tree/2656-solr but per https://redmine.hmdc.harvard.edu/issues/2656#note-12 Solr was abandoned because adopting it requires us to rewrite our business logic against a new API (SolrJ). If the Lucene code is ever significantly refactored, care should be taken to think about a potential move to a non-Lucene search solution such as Solr or [ElasticSearch][].
 
