@@ -4,3 +4,4 @@
 - Issue tracker: https://redmine.hmdc.harvard.edu/projects/dvn
 - Mailing list: https://groups.google.com/group/dataverse-community
 - IRC logs (#dvn on Freenode): http://irclog.iq.harvard.edu/dvn/today
+- API: http://guides.thedata.org/book/data-sharing-api
