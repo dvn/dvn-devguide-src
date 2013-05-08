@@ -1,0 +1,15 @@
+## Testing search from dataverse context, with an emphasis on collections
+
+A root collection can be:
+
+- default
+- static: studies added, maybe from other dataverses
+- dynamic: studies added, maybe from other dataverses
+
+The "local" column is for the number of studies owned by that dataverse.
+
+The numbers under the "static" and "dynamic" columns represent the number of this type of child collection.
+
+The "titleSearch" column will be used to record the results from testing various values under "Title" using advanced search. 
+
+[[!table format=dsv delimiter="	" file="features/search/faceted/testing/status.tsv"]]
