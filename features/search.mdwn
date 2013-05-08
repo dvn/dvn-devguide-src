@@ -1,5 +1,13 @@
 DVN search is powered by Lucene: https://lucene.apache.org/core/
 
+https://redmine.hmdc.harvard.edu/issues/2656 upgrades Lucene 3.0 to 3.5 for the [[faceted]] search feature.
+
+"Generally, the query parser syntax may change from release to release" -- http://lucene.apache.org/core/old_versioned_docs/versions/3_5_0/queryparsersyntax.html
+
+Lucene 3.6 and higher introduces some backward-incompatible changes that will need to be addressed before we can upgrade:
+
+- "LUCENE-3679: The expert IndexReader.getFieldNames(FieldOption) API has been removed and replaced with the experimental getFieldInfos API.  All IndexReader subclasses must implement getFieldInfos." -- http://lucene.apache.org/core/3_6_0/changes/Changes.html
+
 Subpages:
 
 [[!map pages=features/search/*]]
