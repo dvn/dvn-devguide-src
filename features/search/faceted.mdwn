@@ -39,9 +39,13 @@ This search looks into the variables of uploaded files (tab-separated, Stata, SP
 
 If you search for "data" under "Title" and "Variable Information" you should see facets.
 
+##### FIXME: Variable search is broken as of https://github.com/IQSS/dvn/commit/0507f48
+
 #### FITS File (metadata) Information (lower priority)
 
 Please note that you only see the option to search FITS files if any FITS files have been uploaded.
+
+##### FIXME: Unknown if FITS search works as of https://github.com/IQSS/dvn/commit/0507f48
 
 ### New search from study listing page - DONE
 
@@ -65,11 +69,23 @@ We decide to defer on adding facets to dataverse landing pages, at least for now
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked) unless the dataverse has collections that contain studies from other dataverses.
 
-In https://github.com/IQSS/dvn/commit/5debbd9 dataverse-specific search was change to be based on facets which means that `+$facets:dvName?Murray Research Archive Original Collection` (for example) is appended to the normal query but this means that searches wouldn't find studies in collections from other dataverses. To resolve this for now, as of https://github.com/IQSS/dvn/commit/bf343fe if a dataverse has a collection, we use the older, non-faceted search.
-
 To perform a basic search within a collection, you can click the name of the collection from the landing page of the dataverse. For example, this is the "Heath" collection from MRA (by clicking "Health" on the MRA landing page)
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/StudyListingPage.xhtml?mode=1&collectionId=6
+
+#### FIXME:
+
+As of https://github.com/IQSS/dvn/commit/0507f48 a search for "data" at http://dvn-3.hmdc.harvard.edu/dvn/dv/mra yields...
+
+- 438 studies before search
+- 442 studies nothing checked
+- 432 studies if "within this collection" is checked
+
+... whereas at http://thedata.harvard.edu/dvn/dv/mra (3.4) the numbers are:
+
+- 437 studies before search
+- 431 studies nothing checked
+- 431 studies if "within this collection" is checked
 
 ### Advanced search from dataverse level - PARTIAL
 
