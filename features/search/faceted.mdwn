@@ -1,8 +1,6 @@
-In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate, per a [[roadmap]]). The [[status]] page summarizes the items below.
+In https://redmine.hmdc.harvard.edu/issues/2656 faceted search is being added to DVN to replace non-faceted search (where appropriate, per a [[roadmap]]). The [[status]] page summarizes the items below. Testing is taking place at http://dvn-3.hmdc.harvard.edu/dvn/
 
 [[!toc levels=4]]
-
-http://dvn-3.hmdc.harvard.edu/dvn/ is the place to test faceted search because war files built from the latest code at https://github.com/iqss/dvn/tree/2656-lucene are deployed there periodically.
 
 ## Network level - PARTIAL
 
@@ -27,35 +25,35 @@ This is similar to basic search but you can add "contains" or "does not contain"
 - Production Date
 - Time Period Covered Start 
 
-##### FIXME: Some advanced searches failing on dvn-3 (i.e. author), see Redmine 2931
+##### FIXME: Some advanced searches failing on dvn-3 (i.e. author) and in production per Redmine 2931
 
 No results for searches on author at http://dvn-3.hmdc.harvard.edu/dvn/faces/AdvSearchPage.xhtml (seeing author rather than authorName and keyword rather than keywordValue). We are also seeing this in production at http://thedata.harvard.edu/dvn/dv/mra as reported at https://redmine.hmdc.harvard.edu/issues/2931 where a fix (a hack for now) is proposed.
 
 Combinations such as `+(+title:data +productionDate:1997)` seem to work fine.
 
-#### Tabular Data Variable Information (lower priority) - PARTIAL
+#### Tabular Data Variable Information (lower priority) - DEFERRED
 
 This search looks into the variables of uploaded files (tab-separated, Stata, SPSS, etc.).
 
-If you search for "data" under "Title" and "Variable Information" you should see facets.
+We decided to defer on adding facets to variable search, at least for now.
 
-##### FIXME: Variable search is broken as of https://github.com/IQSS/dvn/commit/0507f48
-
-#### FITS File (metadata) Information (lower priority)
+#### FITS File (metadata) Information (lower priority) - DEFERRED
 
 Please note that you only see the option to search FITS files if any FITS files have been uploaded.
 
-##### FIXME: Unknown if FITS search works as of https://github.com/IQSS/dvn/commit/0507f48
+We decided to defer on adding facets to FITS/metadata search, at least for now.
 
 ### New search from study listing page - DONE
 
 A fast way to get to the study listing page is by clicking a suggested term from the homepage: http://dvn-3.hmdc.harvard.edu/dvn/
 
-### Subsearch ("within these results" after a search)
+### Subsearch ("within these results" after a search) - DEFERRED
 
 You are given the option to check this box after search from the home page or the advanced search page.
 
-##### FIXME: Text above subsearch should show all previous and current terms
+#### FIXME: Space where facets were should be taken up by the rest of the page
+
+#### FIXME: Text above subsearch should show all previous and current terms
 
 ## Dataverse level - PARTIAL
 
@@ -63,7 +61,7 @@ You are given the option to check this box after search from the home page or th
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, the number of studies shown corresponds to that dataverse. That is, a search is performed.  Should we show faceted search results here? This is similar in concept to showing faceted results on the "all studies listing" page.
 
-We decide to defer on adding facets to dataverse landing pages, at least for now.
+We decided to defer on adding facets to dataverse landing pages, at least for now.
 
 ### Basic search from dataverse level - PARTIAL
 
@@ -73,12 +71,12 @@ To perform a basic search within a collection, you can click the name of the col
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/StudyListingPage.xhtml?mode=1&collectionId=6
 
-#### FIXME:
+#### FIXME: investigate number of hits at dataverse level
 
 As of https://github.com/IQSS/dvn/commit/0507f48 a search for "data" at http://dvn-3.hmdc.harvard.edu/dvn/dv/mra yields...
 
 - 438 studies before search
-- 442 studies nothing checked
+- 442 studies nothing checked (additional studies?)
 - 432 studies if "within this collection" is checked
 
 ... whereas at http://thedata.harvard.edu/dvn/dv/mra (3.4) the numbers are:
@@ -95,7 +93,7 @@ Please note that from the advanced search page at the dataverse level, you can s
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/AdvSearchPage.xhtml
 
-### Subsearch ("within these results") after a search from a dataverse page
+### Subsearch ("within these results") after a search from a dataverse page - DEFERRED
 
 This will probably be solved when the main "within these results" area is refactored.
 
