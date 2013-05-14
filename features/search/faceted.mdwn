@@ -51,8 +51,6 @@ A fast way to get to the study listing page is by clicking a suggested term from
 
 You are given the option to check this box after search from the home page or the advanced search page.
 
-#### FIXME: Space where facets were should be taken up by the rest of the page
-
 #### FIXME: Text above subsearch should show all previous and current terms
 
 ## Dataverse level - PARTIAL
