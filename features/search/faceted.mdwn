@@ -63,7 +63,11 @@ We decided to defer on adding facets to dataverse landing pages, at least for no
 
 ### Basic search from dataverse level - PARTIAL
 
+#### Basic search for an entire dataverse - DONE
+
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra (for example).  From the landing page for a dataverse, searches are automatically narrowed to be within that dataverse (seemingly whether or not "within this collection" is checked) unless the dataverse has collections that contain studies from other dataverses.
+
+#### Basic search of a selected collection - TODO
 
 To perform a basic search within a collection, you can click the name of the collection from the landing page of the dataverse. For example, this is the "Heath" collection from MRA (by clicking "Health" on the MRA landing page)
 
@@ -85,9 +89,11 @@ As of https://github.com/IQSS/dvn/commit/0507f48 a search for "data" at http://d
 
 ### Advanced search from dataverse level - PARTIAL
 
-As with basic search, for now we only show faceted results from the dataverse level when the dataverse doesn't have any collections.
+#### Search All Collections - DONE
 
-Please note that from the advanced search page at the dataverse level, you can select particular collections with the radio button under "Collection Scope". For example, you can select the "Health" collection from MRA here:
+#### Search Only the Selected Collections - TODO
+
+From the advanced search page at the dataverse level, you can select particular collections with the radio button under "Collection Scope". For example, you can select the "Health" collection from MRA here:
 
 http://dvn-3.hmdc.harvard.edu/dvn/dv/mra/faces/AdvSearchPage.xhtml
 
