@@ -53,6 +53,14 @@ You are given the option to check this box after search from the home page or th
 
 #### FIXME: Text above subsearch should show all previous and current terms
 
+## Subnetwork level - TODO
+
+Subnetworks are being implemented in https://redmine.hmdc.harvard.edu/issues/2918
+
+### Basic search - TODO
+
+### Advanced search - TODO
+
 ## Dataverse level - PARTIAL
 
 ### Landing page for each dataverse - DEFERRED
