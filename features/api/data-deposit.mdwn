@@ -1,0 +1,59 @@
+[[!toc levels=5]]
+
+## Project
+
+https://redmine.hmdc.harvard.edu/issues/3108 
+
+http://projects.iq.harvard.edu/ojs-dvn/book/faq-ojs-dataverse-integration-project
+
+## What is SWORD? 
+
+http://swordapp.org
+
+http://en.wikipedia.org/wiki/SWORD_%28protocol%29
+
+## SWORD v2 spec
+
+http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
+
+## Implementations
+
+http://swordapp.org/sword-v2/sword-v2-implementations/
+
+### Python
+
+#### Simple Sword Server (reference implementation)
+
+https://github.com/swordapp/Simple-Sword-Server
+
+https://github.com/dvn/swordpoc (Vagrant environment)
+
+#### Databank
+
+https://github.com/dataflow/RDFDatabank/wiki/SWORD-overview-for-developers
+
+### Java
+
+#### DSpace
+
+https://github.com/DSpace/DSpace/tree/master/dspace-swordv2/src/main/java/org/dspace/sword2
+
+### Perl
+
+#### EPrints
+
+http://wiki.eprints.org/w/SWORD
+
+https://github.com/eprints/eprints/blob/master/perl_lib/EPrints/Apache/CRUD.pm
+
+### Community
+
+http://swordapp.org/contact/
+
+#### sword-app-tech@lists.sourceforge.net
+
+https://lists.sourceforge.net/lists/listinfo/sword-app-tech http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/
+
+#### https://twitter.com/swordapp
+
+#### #dspace on Freenode
