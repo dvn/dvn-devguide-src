@@ -46,14 +46,14 @@ http://wiki.eprints.org/w/SWORD
 
 https://github.com/eprints/eprints/blob/master/perl_lib/EPrints/Apache/CRUD.pm
 
-### Community
+## Community
 
 http://swordapp.org/contact/
 
-#### sword-app-tech@lists.sourceforge.net
+### sword-app-tech@lists.sourceforge.net
 
 https://lists.sourceforge.net/lists/listinfo/sword-app-tech http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/
 
-#### https://twitter.com/swordapp
+### https://twitter.com/swordapp
 
-#### #dspace on Freenode
+### #dspace on Freenode
