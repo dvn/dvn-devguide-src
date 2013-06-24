@@ -38,6 +38,10 @@ https://github.com/dataflow/RDFDatabank/wiki/SWORD-overview-for-developers
 
 https://github.com/DSpace/DSpace/tree/master/dspace-swordv2/src/main/java/org/dspace/sword2
 
+#### Fedora (Fedora Commons Repository Software)
+
+https://github.com/mediashelf/sword2-fedora and https://github.com/mediashelf/sword2-server via http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/msg00317.html
+
 ### Perl
 
 #### EPrints
