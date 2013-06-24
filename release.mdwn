@@ -38,4 +38,11 @@ Here is an example of how the 3.4 tag ( https://github.com/IQSS/dvn/tree/3.4 ) w
 
 ## Make release available for download
 
-Historically, releases have been made available at http://sourceforge.net/projects/dvn/files/dvn/ but more recently they have been available at http://dvn.github.io/downloads as well.
+On dvn-build:
+
+    cd tools/installer
+    mkdir dvninstall/config
+    mkdir dvninstall/appdeploy/dist
+    make installer
+
+Rename the resulting "dvninstall.zip" to include the release number (i.e. "dvninstall_v3_4.zip") and upload it, the separate war file, a readme, and a buildupdate script (all these files should include the release number) to SourceForge (i.e. http://sourceforge.net/projects/dvn/files/dvn/3.4/ ).
