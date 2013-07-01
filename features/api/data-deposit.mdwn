@@ -6,6 +6,17 @@ https://redmine.hmdc.harvard.edu/issues/3108
 
 http://projects.iq.harvard.edu/ojs-dvn/book/faq-ojs-dataverse-integration-project
 
+## URLs (URIs/IRIs) for DVN's Data Deposit API
+
+(Per http://en.wikipedia.org/wiki/Internationalized_resource_identifier an IRI is basically a URI that permits Unicode. The SWORD spec uses the term IRI.)
+
+These URLs should be considered unstable. They come from scripts used in development to test the API: https://github.com/IQSS/dvn/tree/483856509cfeb45b37aad171c5f4597bc935a79a/tools/scripts/data-deposit-api
+
+- Service Document URL
+    - /dvn/api/data-deposit/swordv2/service-document 
+- SWORD Collection URL
+    - /dvn/api/data-deposit/swordv2/collection
+
 ## What is SWORD? 
 
 http://swordapp.org
