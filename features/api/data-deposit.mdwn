@@ -19,6 +19,49 @@ These URLs should be considered unstable. They come from scripts used in develop
 - SWORD Collection URL
     - /dvn/api/data-deposit/swordv2/collection
 
+## SWORD Service Document example (from http://dash.harvard.edu )
+
+Digital Access to Scholarship at Harvard (DASH) has implemented SWORDv2, building on the DSpace code base. Their SWORD Service Document looks something like this:
+
+    <?xml version="1.0"?>
+    <service xmlns="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom">
+      <workspace>
+        <atom:title type="text">Digital Access to Scholarship at Harvard</atom:title>
+        <collection href="http://dash.harvard.edu/swordv2/collection/1/2">
+          <atom:title type="text">FAS Scholarly Articles</atom:title>
+          <accept alternate="multipart-related">*/*</accept>
+          <collectionPolicy xmlns="http://purl.org/net/sword/terms/">NOTE: PLACE YOUR OWN LICENSE HERE</collectionPolicy>
+          <mediation xmlns="http://purl.org/net/sword/terms/">true</mediation>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/SimpleZip</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/METSDSpaceSIP</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/Binary</acceptPackaging>
+          <abstract xmlns="http://purl.org/dc/terms/">Peer reviewed scholarly articles from the Faculty of Arts and Sciences of Harvard University</abstract>
+        </collection>
+        <collection href="http://dash.harvard.edu/swordv2/collection/1/10527970">
+          <atom:title type="text">FAS Student Papers</atom:title>
+          <accept alternate="multipart-related">*/*</accept>
+          <collectionPolicy xmlns="http://purl.org/net/sword/terms/">NOTE: PLACE YOUR OWN LICENSE HERE </collectionPolicy>
+          <mediation xmlns="http://purl.org/net/sword/terms/">true</mediation>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/SimpleZip</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/METSDSpaceSIP</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/Binary</acceptPackaging>
+          <abstract xmlns="http://purl.org/dc/terms/">FAS Student Papers</abstract>
+        </collection>
+        <collection href="http://dash.harvard.edu/swordv2/collection/1/4927603">
+          <atom:title type="text">FAS Theses and Dissertations</atom:title>
+          <accept alternate="multipart-related">*/*</accept>
+          <collectionPolicy xmlns="http://purl.org/net/sword/terms/">NOTE: PLACE YOUR OWN LICENSE HERE</collectionPolicy>
+          <mediation xmlns="http://purl.org/net/sword/terms/">true</mediation>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/SimpleZip</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/METSDSpaceSIP</acceptPackaging>
+          <acceptPackaging xmlns="http://purl.org/net/sword/terms/">http://purl.org/net/sword/package/Binary</acceptPackaging>
+          <abstract xmlns="http://purl.org/dc/terms/">FAS Theses and Dissertations</abstract>
+        </collection>
+      </workspace>
+      <generator xmlns="http://www.w3.org/2005/Atom" uri="http://www.dspace.org/ns/sword/2.0/" version="2.0">dash-webadmin@hulmail.harvard.edu</generator>
+      <version xmlns="http://purl.org/net/sword/terms/">2.0</version>
+    </service>
+
 ## What is SWORD? 
 
 http://swordapp.org
