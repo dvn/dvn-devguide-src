@@ -6,6 +6,8 @@ https://redmine.hmdc.harvard.edu/issues/3108
 
 http://projects.iq.harvard.edu/ojs-dvn/book/faq-ojs-dataverse-integration-project
 
+http://pkp.sfu.ca/wiki/index.php?title=PKP/Dataverse_Network_Integration
+
 ## URLs (URIs/IRIs) for DVN's Data Deposit API
 
 (Per http://en.wikipedia.org/wiki/Internationalized_resource_identifier an IRI is basically a URI that permits Unicode. The SWORD spec uses the term IRI.)
