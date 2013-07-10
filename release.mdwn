@@ -46,3 +46,7 @@ On dvn-build:
     make installer
 
 Rename the resulting "dvninstall.zip" to include the release number (i.e. "dvninstall_v3_4.zip") and upload it, the separate war file, a readme, and a buildupdate script (all these files should include the release number) to SourceForge (i.e. http://sourceforge.net/projects/dvn/files/dvn/3.4/ ).
+
+## Increment the version number
+
+The file to edit is https://github.com/IQSS/dvn/blob/develop/src/DVN-web/src/VersionNumber.properties
