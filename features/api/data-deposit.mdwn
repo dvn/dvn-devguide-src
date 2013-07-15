@@ -26,15 +26,24 @@ http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.
 
 ## DVN SWORD v2 implementation
 
+### DVN SWORD v2 implementation roadmap
+
+- Still lots of work to do... so far it allows you to...
+    - retrieve a SWORD service document after authenticating
+    - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/tools/scripts/data-deposit-api/atom-entry-study.xml
+- Next steps
+    - after creating study, attach binary to it (2 step process is diagrammed at http://swordapp.org/2012/12/swordv2-compliance-how-to-achieve-it/ and described at http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/msg00327.html )
+    - improve mapping between dcterms (Dublic Core) and DDI
+    - merge https://github.com/IQSS/dvn/tree/3108-data-deposit-api into "develop" branch
+    - deal with known bugs
+        - start committing to https://github.com/IQSS/swordv2-java-server-library (bug fixes for https://github.com/swordapp/JavaServer2.0 )
+
 ### Merging branch into develop
 
 DVN's SWORD implementation is being developed in this branch: https://github.com/IQSS/dvn/tree/3108-data-deposit-api 
 
 Before merging, some talking points:
 
-- Still lots of work to do... so far it allows you to...
-    - retrieve a SWORD service document after authenticating 
-    - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/tools/scripts/data-deposit-api/atom-entry-study.xml
 - Plan for using https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar)
     - Known bugs
         - first character truncated from filename: https://github.com/swordapp/JavaServer2.0/pull/2
