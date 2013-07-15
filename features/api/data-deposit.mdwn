@@ -10,6 +10,8 @@ http://pkp.sfu.ca/wiki/index.php?title=PKP/Dataverse_Network_Integration
 
 "DVN SWORDv2 implementation design" doc: https://docs.google.com/document/d/1Sw8ZTjelFtWIi1etWqgQ0gPh6ltJuh8voX00WUi7Sng/edit?usp=sharing
 
+http://projects.iq.harvard.edu/files/styles/os_files_xxlarge/public/ojs-dvn/files/whiteboardofswordv2api.jpg via http://projects.iq.harvard.edu/ojs-dvn/blog/update-deep-trenches-swordv2-api-development
+
 ## URLs (URIs/IRIs) for DVN's Data Deposit API
 
 (Per http://en.wikipedia.org/wiki/Internationalized_resource_identifier an IRI is basically a URI that permits Unicode. The SWORD spec uses the term IRI.)
