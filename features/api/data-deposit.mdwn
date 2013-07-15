@@ -1,8 +1,10 @@
-[[!toc levels=5]]
+[[!toc levels=6]]
 
 ## Project
 
 https://redmine.hmdc.harvard.edu/issues/3108 
+
+http://projects.iq.harvard.edu/ojs-dvn/book/project-documentation
 
 http://projects.iq.harvard.edu/ojs-dvn/book/faq-ojs-dataverse-integration-project
 
@@ -22,20 +24,68 @@ http://en.wikipedia.org/wiki/SWORD_%28protocol%29
 
 http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
 
-## URLs (URIs/IRIs) for DVN's Data Deposit API
+## DVN SWORD v2 implementation
 
-(Per http://en.wikipedia.org/wiki/Internationalized_resource_identifier an IRI is basically a URI that permits Unicode. The SWORD spec uses the term IRI.)
+### Merging branch into develop
 
-These URLs should be considered unstable. They come from scripts used in development to test the API: https://github.com/IQSS/dvn/tree/483856509cfeb45b37aad171c5f4597bc935a79a/tools/scripts/data-deposit-api
+DVN's SWORD implementation is being developed in this branch: https://github.com/IQSS/dvn/tree/3108-data-deposit-api 
 
-- Service Document URL
-    - /dvn/api/data-deposit/swordv2/service-document 
-- SWORD Collection URL
-    - /dvn/api/data-deposit/swordv2/collection
+Before merging, some talking points:
 
-## SWORD Service Document example (from http://dash.harvard.edu )
+- Still lots of work to do... so far it allows you to...
+    - retrieve a SWORD service document after authenticating 
+    - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/tools/scripts/data-deposit-api/atom-entry-study.xml
+- Plan for using https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar)
+    - Known bugs
+        - first character truncated from filename: https://github.com/swordapp/JavaServer2.0/pull/2
+        - multipart deposit results in MalformedStreamException: https://github.com/dvn/swordpoc/issues/2
+    - Fork repo under https://github.com/IQSS and submit pull requests?
+    - Use Jenkins to build sword2-server-1.0-classes.jar? See https://help.hmdc.harvard.edu/Ticket/Display.html?id=162404
+- URL patterns in servlet mappings: https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/src/DVN-web/web/WEB-INF/web.xml
+    - `/api/data-deposit/swordv2/service-document/*`
+    - `/api/data-deposit/swordv2/collection/*`
+    - `/api/data-deposit/swordv2/edit/*`
+- Many jars required (and more?):
+    - abdera-core-1.1.1.jar
+    - abdera-i18n-1.1.1.jar
+    - abdera-parser-1.1.1.jar
+    - axiom-api-1.2.10.jar
+    - axiom-impl-1.2.10.jar
+    - commons-fileupload-1.2.1.jar
+    - sword2-server-1.0-classes.jar
+    - xom-1.1.jar
 
-Digital Access to Scholarship at Harvard (DASH) has implemented SWORDv2, building on the DSpace code base. Their SWORD Service Document looks something like this:
+## SWORD v2 server implementations
+
+http://swordapp.org/sword-v2/sword-v2-implementations/
+
+### Python
+
+#### Simple Sword Server (reference implementation)
+
+https://github.com/swordapp/Simple-Sword-Server
+
+https://github.com/dvn/swordpoc (Vagrant environment)
+
+#### Databank
+
+https://github.com/dataflow/RDFDatabank/wiki/SWORD-overview-for-developers
+
+### Java
+
+#### DSpace
+
+The DSpace implementation of SWORD v2 was written by the spec lead:
+
+https://github.com/DSpace/DSpace/tree/master/dspace-swordv2/src/main/java/org/dspace/sword2
+
+#### DASH (Digital Access to Scholarship at Harvard) - http://dash.harvard.edu
+
+DASH is built on top of DSpace and one of the DASH developers has been submitting pull requests to the common Java server library for SWORD at https://github.com/bmckinney/JavaServer2.0
+
+##### Service Document example from DASH
+
+The DASH Service Document looks something like this:
 
     <?xml version="1.0"?>
     <service xmlns="http://www.w3.org/2007/app" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -75,28 +125,6 @@ Digital Access to Scholarship at Harvard (DASH) has implemented SWORDv2, buildin
       <generator xmlns="http://www.w3.org/2005/Atom" uri="http://www.dspace.org/ns/sword/2.0/" version="2.0">dash-webadmin@hulmail.harvard.edu</generator>
       <version xmlns="http://purl.org/net/sword/terms/">2.0</version>
     </service>
-
-## SWORD v2 server implementations
-
-http://swordapp.org/sword-v2/sword-v2-implementations/
-
-### Python
-
-#### Simple Sword Server (reference implementation)
-
-https://github.com/swordapp/Simple-Sword-Server
-
-https://github.com/dvn/swordpoc (Vagrant environment)
-
-#### Databank
-
-https://github.com/dataflow/RDFDatabank/wiki/SWORD-overview-for-developers
-
-### Java
-
-#### DSpace
-
-https://github.com/DSpace/DSpace/tree/master/dspace-swordv2/src/main/java/org/dspace/sword2
 
 #### Fedora (Fedora Commons Repository Software)
 
