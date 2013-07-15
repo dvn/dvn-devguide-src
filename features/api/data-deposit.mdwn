@@ -66,7 +66,7 @@ Digital Access to Scholarship at Harvard (DASH) has implemented SWORDv2, buildin
       <version xmlns="http://purl.org/net/sword/terms/">2.0</version>
     </service>
 
-## What is SWORD? 
+## What is SWORD? - Simple Web-service Offering Repository Deposit
 
 http://swordapp.org
 
