@@ -76,7 +76,7 @@ http://en.wikipedia.org/wiki/SWORD_%28protocol%29
 
 http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
 
-## Implementations
+## SWORD v2 server implementations
 
 http://swordapp.org/sword-v2/sword-v2-implementations/
 
