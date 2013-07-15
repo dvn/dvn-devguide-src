@@ -12,6 +12,16 @@ http://pkp.sfu.ca/wiki/index.php?title=PKP/Dataverse_Network_Integration
 
 http://projects.iq.harvard.edu/files/styles/os_files_xxlarge/public/ojs-dvn/files/whiteboardofswordv2api.jpg via http://projects.iq.harvard.edu/ojs-dvn/blog/update-deep-trenches-swordv2-api-development
 
+## What is SWORD? - Simple Web-service Offering Repository Deposit
+
+http://swordapp.org
+
+http://en.wikipedia.org/wiki/SWORD_%28protocol%29
+
+## SWORD v2 spec
+
+http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
+
 ## URLs (URIs/IRIs) for DVN's Data Deposit API
 
 (Per http://en.wikipedia.org/wiki/Internationalized_resource_identifier an IRI is basically a URI that permits Unicode. The SWORD spec uses the term IRI.)
@@ -65,16 +75,6 @@ Digital Access to Scholarship at Harvard (DASH) has implemented SWORDv2, buildin
       <generator xmlns="http://www.w3.org/2005/Atom" uri="http://www.dspace.org/ns/sword/2.0/" version="2.0">dash-webadmin@hulmail.harvard.edu</generator>
       <version xmlns="http://purl.org/net/sword/terms/">2.0</version>
     </service>
-
-## What is SWORD? - Simple Web-service Offering Repository Deposit
-
-http://swordapp.org
-
-http://en.wikipedia.org/wiki/SWORD_%28protocol%29
-
-## SWORD v2 spec
-
-http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
 
 ## SWORD v2 server implementations
 
