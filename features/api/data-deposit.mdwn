@@ -36,7 +36,7 @@ http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.
 - Next steps
     - experiment with different files (RData, CSV, Stata, etc.) and ingest them
     - improve mapping between dcterms (Dublic Core) and DDI
-    - deal with known bugs in the official SWORDv2 Java server library: https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar) by committing to https://github.com/IQSS/swordv2-java-server-library and build sword2-server-1.0-classes.jar with build.hmdc (Jenkins) per https://help.hmdc.harvard.edu/Ticket/Display.html?id=162404
+    - deal with known bugs in the official SWORDv2 Java server library: https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar) by committing to https://github.com/IQSS/swordv2-java-server-library and build sword2-server-1.0-classes.jar at https://build.hmdc.harvard.edu:8443/job/swordv2-java-server-library-iqss/
         - first character truncated from filename: https://github.com/swordapp/JavaServer2.0/pull/2
         - multipart deposit results in MalformedStreamException: https://github.com/dvn/swordpoc/issues/2
     - force https
