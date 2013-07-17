@@ -10,8 +10,6 @@ http://projects.iq.harvard.edu/ojs-dvn/book/faq-ojs-dataverse-integration-projec
 
 http://pkp.sfu.ca/wiki/index.php?title=PKP/Dataverse_Network_Integration
 
-"DVN SWORDv2 implementation design" doc: https://docs.google.com/document/d/1Sw8ZTjelFtWIi1etWqgQ0gPh6ltJuh8voX00WUi7Sng/edit?usp=sharing
-
 http://projects.iq.harvard.edu/files/styles/os_files_xxlarge/public/ojs-dvn/files/whiteboardofswordv2api.jpg via http://projects.iq.harvard.edu/ojs-dvn/blog/update-deep-trenches-swordv2-api-development
 
 ## What is SWORD? - Simple Web-service Offering Repository Deposit
@@ -26,43 +24,45 @@ http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.
 
 ## DVN SWORD v2 implementation
 
-### DVN SWORD v2 implementation roadmap
-
-- Still lots of work to do... so far it allows you to...
+- Status: Still lots of work to do... so far it allows you to...
     - retrieve a SWORD service document after authenticating
-    - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/tools/scripts/data-deposit-api/atom-entry-study.xml
+    - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/10ece42ec9236ccd2e58eea2e69c7b54fc783133/tools/scripts/data-deposit-api/atom-entry-study.xml
+    - upload a file to a study (treated as binary for now)
+- Communication with OJS developers: http://projects.iq.harvard.edu/ojs-dvn/people
+    - DVN SWORDv2 implementation design document: https://docs.google.com/document/d/1Sw8ZTjelFtWIi1etWqgQ0gPh6ltJuh8voX00WUi7Sng/edit?usp=sharing
+    - Sample Atom Entry (SWORDv2) BTW OJS & DVN (with notes): https://docs.google.com/document/d/1Rn70XItfA6_mJ4JA3I7m4em0spfdXIIHhwkrgCl40uE/edit?usp=sharing
+    - http://irclog.iq.harvard.edu/dvn/2013-07-02
+    - http://irclog.iq.harvard.edu/dvn/2013-07-10
 - Next steps
-    - after creating study, attach binary to it (2 step process is diagrammed at http://swordapp.org/2012/12/swordv2-compliance-how-to-achieve-it/ and described at http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/msg00327.html )
+    - experiment with different files (RData, CSV, Stata, etc.) and ingest them
     - improve mapping between dcterms (Dublic Core) and DDI
-    - merge https://github.com/IQSS/dvn/tree/3108-data-deposit-api into "develop" branch
-    - deal with known bugs
-        - start committing to https://github.com/IQSS/swordv2-java-server-library (bug fixes for https://github.com/swordapp/JavaServer2.0 )
-
-### Merging branch into develop
-
-DVN's SWORD implementation is being developed in this branch: https://github.com/IQSS/dvn/tree/3108-data-deposit-api 
-
-Before merging, some talking points:
-
-- Plan for using https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar)
-    - Known bugs
+    - deal with known bugs in the official SWORDv2 Java server library: https://github.com/swordapp/JavaServer2.0 (sword2-server-1.0-classes.jar) by committing to https://github.com/IQSS/swordv2-java-server-library and build sword2-server-1.0-classes.jar with build.hmdc (Jenkins) per https://help.hmdc.harvard.edu/Ticket/Display.html?id=162404
         - first character truncated from filename: https://github.com/swordapp/JavaServer2.0/pull/2
         - multipart deposit results in MalformedStreamException: https://github.com/dvn/swordpoc/issues/2
-    - Fork repo under https://github.com/IQSS and submit pull requests?
-    - Use Jenkins to build sword2-server-1.0-classes.jar? See https://help.hmdc.harvard.edu/Ticket/Display.html?id=162404
-- URL patterns in servlet mappings: https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/src/DVN-web/web/WEB-INF/web.xml
-    - `/api/data-deposit/swordv2/service-document/*`
-    - `/api/data-deposit/swordv2/collection/*`
-    - `/api/data-deposit/swordv2/edit/*`
-- Many jars required (and more?):
-    - abdera-core-1.1.1.jar
-    - abdera-i18n-1.1.1.jar
-    - abdera-parser-1.1.1.jar
-    - axiom-api-1.2.10.jar
-    - axiom-impl-1.2.10.jar
-    - commons-fileupload-1.2.1.jar
-    - sword2-server-1.0-classes.jar
-    - xom-1.1.jar
+    - force https
+    - merge https://github.com/IQSS/dvn/tree/3108-data-deposit-api into "develop" branch
+        - URL patterns in servlet mappings: https://github.com/IQSS/dvn/blob/de603773c779a45f67b85908e8746b90c6e04661/src/DVN-web/web/WEB-INF/web.xml
+            - `/api/data-deposit/swordv2/service-document/*`
+            - `/api/data-deposit/swordv2/collection/*`
+            - `/api/data-deposit/swordv2/edit/*`
+            - `/api/data-deposit/swordv2/edit-media/*`
+        - Many jars required (and more?):
+            - abdera-core-1.1.1.jar
+            - abdera-i18n-1.1.1.jar
+            - abdera-parser-1.1.1.jar
+            - axiom-api-1.2.10.jar
+            - axiom-impl-1.2.10.jar
+            - commons-fileupload-1.2.1.jar
+            - sword2-server-1.0-classes.jar
+            - xom-1.1.jar
+- Questions for the DVN team
+    - when should studies be released?
+    - when should a journal dataverse be released?
+    - how are we going to test the DVN SWORDv2 implemention?
+        - the SWORDv2 client at https://github.com/swordapp/JavaClient2.0 seems promising. Some trouble getting it to communicate over HTTPS: how to tell Abdera to ignore invalid cert on localhost - http://mail-archives.apache.org/mod_mbox/abdera-user/201307.mbox/%3CCAHxGWy7kwpTqg6M9m4-SetATeLn9uBu2%2BXwOaPwXZmLME1m3rg%40mail.gmail.com%3E
+    - how are we going to test interoperability with the OJS plugin?
+- Questions for the SWORD community 
+    - To upload a file, it is ok to continue to use the SWORDv2CollectionServlet (POST) or should we switch to the SWORDv2MediaResourceServlet (PUT)? A thread has been started on this: [sword-app-tech] POST atom entry, then PUT media resource - http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/msg00331.html
 
 ## SWORD v2 server implementations
 
