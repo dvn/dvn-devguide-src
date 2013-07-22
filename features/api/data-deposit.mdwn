@@ -18,6 +18,32 @@ http://swordapp.org
 
 http://en.wikipedia.org/wiki/SWORD_%28protocol%29
 
+### Intro to SWORD v2 video by Cottage Labs
+
+http://cottagelabs.com/news/intro-to-sword-2
+
+[[!table format=dsv delimiter="	" file="features/api/data-deposit/swordv2-verbs.tsv"]]
+
+- GET the service-document-uri to retrieve a list of collections
+- POST a package of content to the server which will
+    - unpack it
+    - create an object (a container?) and put into it
+        - metadata
+        - files
+    - return a deposit receipt, which is an Atom entry, which contains three URIs:
+        - edit-uri
+        - edit-media-uri
+        - statement-uri
+- GET the edit-uri to retrieve the same deposit receipt from the original POST (a representation of the container)
+- GET the edit-media-uri to get a package of content, possibly in a zip file
+- GET the statement-uri to retrieve a document (OAI-ORE or Atom feed) that describes the structure of the objects on the server so we can build a representation of the object on the client end
+- PUT a new package on the edit-media URI to *replace* content
+- POST a package to the edit-uri *adds* new content
+- DELETE to the edit-media-uri deletes all the content from the container
+- DELETE to the edit-uri deletes the entire object
+
+See also screenshots at Intro to SWORDv2 Cottage Labs video - Google Drive - https://docs.google.com/a/g.harvard.edu/document/d/1oyz3ZTfZA_7FFNpZNaxR6cDJzLXgm3X1ybwUkMQwL1Q/edit
+
 ## SWORD v2 spec
 
 http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.org/sword-v2/sword-v2-specifications/
