@@ -50,6 +50,12 @@ http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.
 
 ## DVN SWORD v2 implementation
 
+### SWORD terminology as it related to DVN and OJS
+
+SWORD terminology as it related to DVN and OJS: https://docs.google.com/spreadsheet/ccc?key=0AvqMYwdHFZghdGFjenpFOXppQUg4djFOQlRJbW5EWmc&usp=sharing
+
+### Status
+
 - Status: Still lots of work to do... so far it allows you to...
     - retrieve a SWORD service document after authenticating
     - create a study based on metadata (title, author, etc.) in an XML file, i.e. https://github.com/IQSS/dvn/blob/10ece42ec9236ccd2e58eea2e69c7b54fc783133/tools/scripts/data-deposit-api/atom-entry-study.xml
