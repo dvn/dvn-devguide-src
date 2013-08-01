@@ -50,7 +50,15 @@ http://swordapp.github.io/SWORDv2-Profile/SWORDProfile.html via http://swordapp.
 
 ## DVN SWORD v2 implementation
 
-### SWORD terminology as it related to DVN and OJS
+### SWORD as it related to DVN and OJS
+
+#### Important DVN-OJS Google docs
+
+* DVN | Collaborations | OJS folder: https://drive.google.com/a/g.harvard.edu/?tab=mo#folders/0B5hBU9MLa_0KOFZDWFdrbVIydDA
+    * Use Cases / Workflows folder: https://drive.google.com/a/g.harvard.edu/?tab=mo#folders/0BzeLxEN77UZoSTUxVkxnemwyM0k
+        * Working Copy (updated workflow): PKP-Dataverse plugin Use Cases According to Article/Data Lifecycle v.2 (For Internal Use): https://docs.google.com/document/d/1COP7Qg9XjPnaxTqG-dSgB8tq3X504QOCm9A7lk4Iqaw/edit?usp=sharing
+
+#### SWORD terminology as it related to DVN and OJS
 
 SWORD terminology as it related to DVN and OJS: https://docs.google.com/spreadsheet/ccc?key=0AvqMYwdHFZghdGFjenpFOXppQUg4djFOQlRJbW5EWmc&usp=sharing
 
