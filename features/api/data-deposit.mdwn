@@ -120,6 +120,10 @@ https://github.com/dvn/swordpoc (Vagrant environment)
 
 https://github.com/dataflow/RDFDatabank/wiki/SWORD-overview-for-developers
 
+#### OERPUB
+
+https://github.com/oerpub
+
 ### Java
 
 #### DSpace
