@@ -1,0 +1,47 @@
+[[!toc levels=3]]
+
+## DVN Data Deposit API v1 examples using curl
+
+Please note that this is all subject to change! https://github.com/IQSS/dvn/tree/develop/tools/scripts/data-deposit-api contains the latest working example code.
+
+### Retrieve SWORD service document
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/service-document
+
+### Create a study
+
+    curl --insecure -s --data-binary "@atom-entry-study.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
+
+### Deposit data into a study
+
+    curl --include --insecure -s --upload-file example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+
+### List studies in a dataverse
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
+
+### Delete a study
+
+    curl -i --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+
+### Replacing cataloging information (title, author, etc.) for a study
+
+    curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+
+### Replace all files on a study with a new zip file
+
+    curl --include --insecure -s --upload-file example2.zip -H "Content-Disposition: filename=example2.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+
+### Release a study
+
+    curl --insecure -s -X POST -H "In-Progress: false" --upload-file zero-length-file.txt https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:1902.1/XPX0W
+
+## curl reference
+
+### --upload-file is a PUT
+
+"If this is used on an HTTP(S) server, the PUT command will be used." -- http://curl.haxx.se/docs/manpage.html 
+
+### --data-binary is a POST
+
+"(HTTP) This posts data" -- http://curl.haxx.se/docs/manpage.html
