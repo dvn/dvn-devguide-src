@@ -34,7 +34,7 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Release a study
 
-    curl --insecure -s -X POST -H "In-Progress: false" --upload-file zero-length-file.txt https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:1902.1/XPX0W
+    curl --insecure -s -X POST -H "In-Progress: false" --upload-file zero-length-file.txt https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
 
 ## curl reference
 
@@ -45,3 +45,7 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 ### --data-binary is a POST
 
 "(HTTP) This posts data" -- http://curl.haxx.se/docs/manpage.html
+
+## DVN Data Deposit API v1 client written in Python
+
+https://github.com/dvn/swordpoc/tree/master/dvn_client
