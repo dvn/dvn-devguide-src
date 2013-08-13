@@ -20,6 +20,14 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
     curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
 
+### Display a study atom entry (contains statement uri, isReleased state, and isInDraft state)
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+
+### Display a study statement (contains feed of file entries)
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/statement/hdl:TEST/12345
+
 ### Delete a study
 
     curl -i --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
@@ -27,6 +35,14 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 ### Replacing cataloging information (title, author, etc.) for a study
 
     curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+
+### Add files to a study with a zip file
+
+    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+
+### Delete a file by database id
+
+    curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/file/2325541
 
 ### Replace all files on a study with a new zip file
 
