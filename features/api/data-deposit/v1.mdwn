@@ -14,7 +14,7 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Deposit data into a study
 
-    curl --include --insecure -s --upload-file example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+    curl --include --insecure -s --upload-file example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
 
 ### List studies in a dataverse
 
@@ -22,23 +22,23 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Display a study atom entry (contains data citation (bibliographicCitation) statement uri, isReleased state, and isInDraft state)
 
-    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
 
 ### Display a study statement (contains feed of file entries)
 
-    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/statement/hdl:TEST/12345
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/statement/study/hdl:TEST/12345
 
 ### Delete a study
 
-    curl -i --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+    curl -i --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
 
 ### Replacing cataloging information (title, author, etc.) for a study
 
-    curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+    curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
 
 ### Add files to a study with a zip file
 
-    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
 
 ### Delete a file by database id
 
@@ -46,11 +46,11 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Replace all files on a study with a new zip file
 
-    curl --include --insecure -s --upload-file example2.zip -H "Content-Disposition: filename=example2.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/hdl:TEST/12345
+    curl --include --insecure -s --upload-file example2.zip -H "Content-Disposition: filename=example2.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
 
 ### Release a study
 
-    curl --insecure -s -X POST -H "In-Progress: false" --upload-file zero-length-file.txt https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/hdl:TEST/12345
+    curl --insecure -s -X POST -H "In-Progress: false" --upload-file zero-length-file.txt https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
 
 ## curl reference
 
