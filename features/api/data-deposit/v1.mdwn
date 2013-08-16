@@ -42,7 +42,7 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Delete a file by database id
 
-    curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/file/2325541
+    curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/file/2325541
 
 ### Replace all files on a study with a new zip file
 
