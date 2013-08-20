@@ -111,7 +111,7 @@ respectively.
 
 ## Configure DVN-web project libraries
 
-Under Projects, right-click DNV-web and choose "Resolve Reference Problems". You should see the following jars listed:
+Under Projects, right-click DVN-web and choose "Resolve Reference Problems". You should see the following jars listed:
 
 - auto-depends.jar
 - common-util.jar
