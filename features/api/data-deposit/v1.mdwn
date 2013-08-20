@@ -62,6 +62,11 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 "(HTTP) This posts data" -- http://curl.haxx.se/docs/manpage.html
 
+## Reformating XML output with xmllint to make it readable
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/service-document | xmllint -format -
+
 ## DVN Data Deposit API v1 client written in Python
 
 https://github.com/dvn/swordpoc/tree/master/dvn_client
+
