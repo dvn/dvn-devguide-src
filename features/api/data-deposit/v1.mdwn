@@ -12,10 +12,6 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
     curl --insecure -s --data-binary "@atom-entry-study.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
 
-### Deposit data into a study
-
-    curl --include --insecure -s --upload-file example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
-
 ### List studies in a dataverse
 
     curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
