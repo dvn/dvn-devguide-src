@@ -16,6 +16,14 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
     curl --insecure -s --data-binary @example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
 
+### Display a study atom entry (contains data citation (bibliographicCitation) statement uri, isReleased state, isInDraft state, and isDeaccessioned state)
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
+
+### Display a study statement (contains feed of file entries)
+
+    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/statement/study/hdl:TEST/12345
+
 ### Delete a file by database id
 
     curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/file/2325541
@@ -27,14 +35,6 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 ### List studies in a dataverse
 
     curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
-
-### Display a study atom entry (contains data citation (bibliographicCitation) statement uri, isReleased state, and isInDraft state)
-
-    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
-
-### Display a study statement (contains feed of file entries)
-
-    curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/statement/study/hdl:TEST/12345
 
 ### Delete a study (non-released studies only)
 
