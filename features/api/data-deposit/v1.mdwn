@@ -12,6 +12,18 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
     curl --insecure -s --data-binary "@atom-entry-study.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
 
+### Add files to a study with a zip file
+
+    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
+
+### Delete a file by database id
+
+    curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/file/2325541
+
+### Replacing cataloging information (title, author, etc.) for a study
+
+    curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
+
 ### List studies in a dataverse
 
     curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
@@ -31,18 +43,6 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 ### Deaccession a study (released studies only)
 
     curl -i --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
-
-### Replacing cataloging information (title, author, etc.) for a study
-
-    curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
-
-### Add files to a study with a zip file
-
-    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
-
-### Delete a file by database id
-
-    curl --include --insecure -s -X DELETE https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/file/2325541
 
 ### Release a study
 
