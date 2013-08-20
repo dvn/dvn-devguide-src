@@ -14,7 +14,7 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
 ### Add files to a study with a zip file
 
-    curl --insecure -s --data-binary @another.zip -H "Content-Disposition: filename=another.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
+    curl --insecure -s --data-binary @example.zip -H "Content-Disposition: filename=example.zip" -H "Content-Type: application/zip" -H "Packaging: http://purl.org/net/sword/package/SimpleZip" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit-media/study/hdl:TEST/12345
 
 ### Delete a file by database id
 
