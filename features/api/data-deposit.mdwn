@@ -183,6 +183,16 @@ The DASH Service Document looks something like this:
 
 https://github.com/mediashelf/sword2-fedora and https://github.com/mediashelf/sword2-server via http://www.mail-archive.com/sword-app-tech@lists.sourceforge.net/msg00317.html
 
+#### Carolina Digital Repository (based on Fedora)
+
+https://github.com/UNC-Libraries/Carolina-Digital-Repository/tree/master/sword-server
+
+http://blogs.lib.unc.edu/cdr/index.php/2012/11/06/biomed-central/
+
+http://blogs.lib.unc.edu/cdr/index.php/2012/10/30/curators-workbench-4-0-released/
+
+https://github.com/UNC-Libraries/Curators-Workbench/blob/master/workbench_help/html/concepts/forms.html
+
 ### Perl
 
 #### EPrints
