@@ -8,9 +8,11 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 
     curl --insecure -s https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/service-document
 
-### Create a study
+### Create a study with an Atom entry (XML file)
 
     curl --insecure -s --data-binary "@atom-entry-study.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/collection/dataverse/sword
+
+A sample `atom-entry-study.xml` file is available at https://github.com/IQSS/dvn/blob/develop/tools/scripts/data-deposit-api/atom-entry-study.xml
 
 ### Add files to a study with a zip file
 
@@ -31,6 +33,8 @@ Please note that this is all subject to change! https://github.com/IQSS/dvn/tree
 ### Replacing cataloging information (title, author, etc.) for a study
 
     curl --insecure -s --upload-file "atom-entry-study2.xml" -H "Content-Type: application/atom+xml" https://sword:sword@localhost:8181/dvn/api/data-deposit/v1/swordv2/edit/study/hdl:TEST/12345
+
+A sample `atom-entry-study2.xml` file is available at https://github.com/IQSS/dvn/blob/develop/tools/scripts/data-deposit-api/atom-entry-study2.xml
 
 ### List studies in a dataverse
 
